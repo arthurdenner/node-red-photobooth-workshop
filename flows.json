@@ -1,1 +1,528 @@
-[]
+[
+    {
+        "id": "90f98e82.81a3e",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "a40d1e86.9ce0f",
+        "type": "ui_base",
+        "theme": {
+            "name": "theme-light",
+            "lightTheme": {
+                "default": "#0094CE",
+                "baseColor": "#0094CE",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
+                "edited": true,
+                "reset": false
+            },
+            "darkTheme": {
+                "default": "#097479",
+                "baseColor": "#097479",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
+                "edited": false
+            },
+            "customTheme": {
+                "name": "Untitled Theme 1",
+                "default": "#4B7930",
+                "baseColor": "#4B7930",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif"
+            },
+            "themeState": {
+                "base-color": {
+                    "default": "#0094CE",
+                    "value": "#0094CE",
+                    "edited": false
+                },
+                "page-titlebar-backgroundColor": {
+                    "value": "#0094CE",
+                    "edited": false
+                },
+                "page-backgroundColor": {
+                    "value": "#fafafa",
+                    "edited": false
+                },
+                "page-sidebar-backgroundColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "group-textColor": {
+                    "value": "#1bbfff",
+                    "edited": false
+                },
+                "group-borderColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "group-backgroundColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "widget-textColor": {
+                    "value": "#111111",
+                    "edited": false
+                },
+                "widget-backgroundColor": {
+                    "value": "#0094ce",
+                    "edited": false
+                },
+                "widget-borderColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "base-font": {
+                    "value": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif"
+                }
+            },
+            "angularTheme": {
+                "primary": "indigo",
+                "accents": "blue",
+                "warn": "red",
+                "background": "grey"
+            }
+        },
+        "site": {
+            "name": "Node-RED Dashboard",
+            "hideToolbar": "false",
+            "allowSwipe": "false",
+            "lockMenu": "false",
+            "allowTempTheme": "true",
+            "dateFormat": "DD/MM/YYYY",
+            "sizes": {
+                "sx": 48,
+                "sy": 48,
+                "gx": 6,
+                "gy": 6,
+                "cx": 6,
+                "cy": 6,
+                "px": 0,
+                "py": 0
+            }
+        }
+    },
+    {
+        "id": "270e6c0b.ad3504",
+        "type": "ui_tab",
+        "name": "AI Photo Booth",
+        "icon": "dashboard",
+        "order": 1,
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "b6d3a4e8.13d108",
+        "type": "ui_group",
+        "name": "WebCam",
+        "tab": "270e6c0b.ad3504",
+        "order": 1,
+        "disp": false,
+        "width": "10",
+        "collapse": false
+    },
+    {
+        "id": "b613282f.781f98",
+        "type": "ui_group",
+        "name": "Objects",
+        "tab": "270e6c0b.ad3504",
+        "order": 2,
+        "disp": false,
+        "width": "6",
+        "collapse": false
+    },
+    {
+        "id": "df007e26.f37f5",
+        "type": "ui_spacer",
+        "name": "spacer",
+        "group": "b613282f.781f98",
+        "order": 2,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "85011d94.8831f",
+        "type": "ui_webcam",
+        "z": "90f98e82.81a3e",
+        "name": "",
+        "group": "b6d3a4e8.13d108",
+        "order": 1,
+        "width": "10",
+        "height": "7",
+        "countdown": false,
+        "autoStart": true,
+        "hideCaptureButton": false,
+        "showImage": 0,
+        "format": "jpeg",
+        "x": 400,
+        "y": 260,
+        "wires": [
+            [
+                "738805f2.1e631c",
+                "a2416da4.5e0ea",
+                "535e60b2.74225"
+            ]
+        ]
+    },
+    {
+        "id": "738805f2.1e631c",
+        "type": "debug",
+        "z": "90f98e82.81a3e",
+        "name": "",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 580,
+        "y": 300,
+        "wires": []
+    },
+    {
+        "id": "a2416da4.5e0ea",
+        "type": "change",
+        "z": "90f98e82.81a3e",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "filename",
+                "pt": "msg",
+                "to": "'/tmp/webcam_'& $moment().format('YYYY-MM-DD-hhmmss') & '.jpeg'",
+                "tot": "jsonata"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 610,
+        "y": 380,
+        "wires": [
+            [
+                "9e177ce7.0dd54"
+            ]
+        ]
+    },
+    {
+        "id": "9e177ce7.0dd54",
+        "type": "file",
+        "z": "90f98e82.81a3e",
+        "name": "",
+        "filename": "",
+        "appendNewline": false,
+        "createDir": false,
+        "overwriteFile": "true",
+        "encoding": "none",
+        "x": 780,
+        "y": 440,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "7a2ce56b.4cf37c",
+        "type": "ui_button",
+        "z": "90f98e82.81a3e",
+        "name": "",
+        "group": "b6d3a4e8.13d108",
+        "order": 2,
+        "width": "9",
+        "height": "1",
+        "passthru": false,
+        "label": "Capture",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "icon": "fa-camera fa-2x",
+        "payload": "",
+        "payloadType": "str",
+        "topic": "",
+        "x": 60,
+        "y": 320,
+        "wires": [
+            [
+                "83ceb41a.2977e8"
+            ]
+        ]
+    },
+    {
+        "id": "83ceb41a.2977e8",
+        "type": "change",
+        "z": "90f98e82.81a3e",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "capture",
+                "pt": "msg",
+                "to": "true",
+                "tot": "bool"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 240,
+        "y": 320,
+        "wires": [
+            [
+                "85011d94.8831f"
+            ]
+        ]
+    },
+    {
+        "id": "e9ac2714.5c22a8",
+        "type": "ui_button",
+        "z": "90f98e82.81a3e",
+        "name": "",
+        "group": "b6d3a4e8.13d108",
+        "order": 2,
+        "width": "1",
+        "height": "1",
+        "passthru": false,
+        "label": "",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "icon": "fa-trash fa-2x",
+        "payload": "\"\"",
+        "payloadType": "json",
+        "topic": "",
+        "x": 50,
+        "y": 260,
+        "wires": [
+            [
+                "85011d94.8831f"
+            ]
+        ]
+    },
+    {
+        "id": "58563bc1.4ad3a4",
+        "type": "tensorflowCoco",
+        "z": "90f98e82.81a3e",
+        "name": "",
+        "modelUrl": "http://localhost:1880/coco/model.json",
+        "scoreThreshold": 0.5,
+        "passthru": "false",
+        "lineColour": "magenta",
+        "x": 810,
+        "y": 240,
+        "wires": [
+            [
+                "2734d7a3.dafa68",
+                "64320abc.800254"
+            ]
+        ]
+    },
+    {
+        "id": "2734d7a3.dafa68",
+        "type": "debug",
+        "z": "90f98e82.81a3e",
+        "name": "",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1010,
+        "y": 240,
+        "wires": []
+    },
+    {
+        "id": "9866c8ed.d51ea8",
+        "type": "ui_table",
+        "z": "90f98e82.81a3e",
+        "group": "b6d3a4e8.13d108",
+        "name": "",
+        "order": 3,
+        "width": "6",
+        "height": "8",
+        "columns": [
+            {
+                "field": "class",
+                "title": "Object Type",
+                "width": "",
+                "align": "left",
+                "formatter": "plaintext",
+                "formatterParams": {
+                    "target": "_blank"
+                }
+            },
+            {
+                "field": "score",
+                "title": "Score",
+                "width": "",
+                "align": "left",
+                "formatter": "progress",
+                "formatterParams": {
+                    "target": "_blank"
+                }
+            }
+        ],
+        "outputs": 1,
+        "cts": true,
+        "x": 1030,
+        "y": 320,
+        "wires": [
+            [
+                "c5af3112.00241",
+                "e5fdd116.987b1"
+            ]
+        ]
+    },
+    {
+        "id": "64320abc.800254",
+        "type": "change",
+        "z": "90f98e82.81a3e",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "$append(\t   [],\t   payload.{\t       \"class\":class,\t       \"score\":score*100,\t       \"bbox\":bbox\t   }\t)",
+                "tot": "jsonata"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 860,
+        "y": 320,
+        "wires": [
+            [
+                "9866c8ed.d51ea8"
+            ]
+        ]
+    },
+    {
+        "id": "c5af3112.00241",
+        "type": "debug",
+        "z": "90f98e82.81a3e",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1190,
+        "y": 320,
+        "wires": []
+    },
+    {
+        "id": "4af798cf.394ae8",
+        "type": "annotate-image",
+        "z": "90f98e82.81a3e",
+        "name": "",
+        "fill": "",
+        "stroke": "#ffC000",
+        "lineWidth": 5,
+        "fontSize": 24,
+        "fontColor": "#ffC000",
+        "x": 1220,
+        "y": 520,
+        "wires": [
+            [
+                "85011d94.8831f"
+            ]
+        ]
+    },
+    {
+        "id": "294518e0.854bc8",
+        "type": "change",
+        "z": "90f98e82.81a3e",
+        "name": "",
+        "rules": [
+            {
+                "t": "move",
+                "p": "payload",
+                "pt": "msg",
+                "to": "image",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1160,
+        "y": 580,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "535e60b2.74225",
+        "type": "change",
+        "z": "90f98e82.81a3e",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "image",
+                "pt": "flow",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 600,
+        "y": 240,
+        "wires": [
+            [
+                "58563bc1.4ad3a4"
+            ]
+        ]
+    },
+    {
+        "id": "e5fdd116.987b1",
+        "type": "change",
+        "z": "90f98e82.81a3e",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "annotations",
+                "pt": "msg",
+                "to": "$append(\t   [],\t   payload.{\"label\": class, \"bbox\": bbox}\t)",
+                "tot": "jsonata"
+            },
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "image",
+                "tot": "flow"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1200,
+        "y": 400,
+        "wires": [
+            [
+                "4af798cf.394ae8"
+            ]
+        ]
+    }
+]
